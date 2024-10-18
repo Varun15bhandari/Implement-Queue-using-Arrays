@@ -1,0 +1,59 @@
+class ArrayQueue {
+    int[] arr;
+    int start;
+    int end;
+    int currSize;
+    int maxSize;
+    public ArrayQueue() {
+        arr=new int[10];
+        start=-1;
+        end=-1;
+        currSize=0;
+        maxSize=10;
+        
+    }
+
+    public void push(int x) {
+       if(currSize==maxSize){
+        System.out.println("queue is full of size");
+
+       }
+       if(end==-1){
+        start=0;
+        end=0;
+       }
+       else{
+        end=(end+1)%maxSize;
+       }
+       arr[end]=x;
+       currSize++;
+    }
+
+    public int pop() {
+      if(start==-1){
+        System.out.println("queue is empty");
+      }
+      int popped=arr[start];
+      if(currSize==1){
+        end=-1;
+        start=-1;
+      }
+      else{
+        start=(start+1)%maxSize;
+      }
+      currSize--;
+      return popped;
+    }
+
+    public int peek() {
+        if(start==-1){
+            System.out.println("queue is Empty");
+
+        }
+        return arr[start];
+    }
+
+    public boolean isEmpty() {
+        return (currSize==0);
+    }
+}
